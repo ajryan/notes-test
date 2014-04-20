@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\jobs\triggered\job\job.exe" />
+    <Content Include="App_Data\jobs\triggered\job\job.exe.config" />
     <Content Include="App_Data\jobs\triggered\job\job.pdb" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
@@ -378,7 +379,6 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
-    <Content Include="App_Data\jobs\triggered\job\job.exe.config" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
