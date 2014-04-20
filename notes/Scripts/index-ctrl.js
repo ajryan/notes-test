@@ -36,6 +36,7 @@
                 _this.$http.post('/api/Notes', newNote).then(function (_) {
                     $scope.refreshNotes();
                     proxy.invoke('addNote', newNote.Title);
+                    window.appInsights.logEvent('note added');
                 });
             };
 

@@ -34,12 +34,11 @@
                     Title: this.$scope.newTitle,
                     Text: this.$scope.newText
                 };
-                this.$http.post('/api/Notes', newNote).then(
-                    _ => {
-                        $scope.refreshNotes();
-                        proxy.invoke('addNote', newNote.Title);
-                    }
-                );
+                this.$http.post('/api/Notes', newNote).then(_ => {
+                    $scope.refreshNotes();
+                    proxy.invoke('addNote', newNote.Title);
+                    (<any> window).appInsights.logEvent('note added');
+                });
             };
 
             $scope.refreshNotes();
