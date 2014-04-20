@@ -121,3 +121,6 @@ $tf
 ######### Xamarin #########
 
 *.userprefs
+
+*.mdf
+*.ldf
