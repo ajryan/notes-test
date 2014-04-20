@@ -7,6 +7,21 @@
             this.$http = $http;
             $scope.welcomeMessage = "Notes!";
 
+            // subscribe to SignalR
+            var connection = $.hubConnection();
+            var proxy = connection.createHubProxy('notesHub');
+            connection.start();
+            proxy.on('noteAdded', function () {
+                var msg = [];
+                for (var _i = 0; _i < (arguments.length - 0); _i++) {
+                    msg[_i] = arguments[_i + 0];
+                }
+                $scope.$apply(function () {
+                    $scope.alertMessage = 'New note: ' + msg[0];
+                    $scope.refreshNotes();
+                });
+            });
+
             $scope.refreshNotes = function () {
                 _this.$http.get('/api/Notes').then(function (result) {
                     _this.$scope.notes = result.data;
@@ -19,7 +34,8 @@
                     Text: _this.$scope.newText
                 };
                 _this.$http.post('/api/Notes', newNote).then(function (_) {
-                    return $scope.refreshNotes();
+                    $scope.refreshNotes();
+                    proxy.invoke('addNote', newNote.Title);
                 });
             };
 

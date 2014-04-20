@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using notes.Models;
 
-namespace notes
+namespace notes.Data
 {
     public class NotesInitializer : CreateDatabaseIfNotExists<NotesContext>
     {

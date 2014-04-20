@@ -5,6 +5,7 @@
 </head>
 <body ng-controller="Notes.IndexCtrl">
     <h1 ng-bind="welcomeMessage"></h1>
+    <h2 ng-bind="alertMessage"></h2>
     <table>
         <thead>
             <tr><th>Title</th><th>Text</th></tr>
@@ -20,6 +21,9 @@
     Title: <input ng-model="newTitle" />
     Text: <input ng-model="newText" />
     <button ng-click="submitNew()">Submit</button>
+    <script src="/Scripts/jquery-2.1.0.js"></script>
+    <script src="/Scripts/jquery.signalR-2.0.3.js"></script>
+    <script src="/signalr/hubs"></script>
     <script src="/Scripts/angular.js"></script>
     <script src="/Scripts/index-ctrl.js"></script>
 </body>
