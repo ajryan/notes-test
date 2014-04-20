@@ -3,24 +3,24 @@
 <head>
     <title>Notes</title>
 </head>
-    <body ng-controller="Notes.IndexCtrl">
-        <h1>{{welcomeMessage}}</h1>
-        <table>
-            <thead>
-                <tr><th>Title</th><th>Text</th></tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="note in notes">
-                    <td>{{note.Title}}</td>
-                    <td>{{note.Text}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <h2>New Note</h2>
-        Title: <input ng-model="newTitle"/>
-        Text: <input ng-model="newText"/>
-        <button ng-click="submitNew()">Submit</button>
-        <script src="/Scripts/angular.js"></script>
-        <script src="/Scripts/index-ctrl.js"></script>
-    </body>
+<body ng-controller="Notes.IndexCtrl">
+    <h1 ng-bind="welcomeMessage"></h1>
+    <table>
+        <thead>
+            <tr><th>Title</th><th>Text</th></tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="note in notes">
+                <td ng-bind="note.Title"></td>
+                <td ng-bind="note.Text"></td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>New Note</h2>
+    Title: <input ng-model="newTitle" />
+    Text: <input ng-model="newText" />
+    <button ng-click="submitNew()">Submit</button>
+    <script src="/Scripts/angular.js"></script>
+    <script src="/Scripts/index-ctrl.js"></script>
+</body>
 </html>
