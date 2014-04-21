@@ -110,6 +110,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\jobs\continuous\job\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
     <Content Include="App_Data\jobs\continuous\job\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
     <Content Include="App_Data\jobs\continuous\job\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
     <Content Include="App_Data\jobs\continuous\job\amd64\sqlceca40.dll" />
@@ -127,8 +128,18 @@
     <Content Include="App_Data\jobs\continuous\job\job.exe" />
     <Content Include="App_Data\jobs\continuous\job\job.exe.config" />
     <Content Include="App_Data\jobs\continuous\job\job.pdb" />
+    <Content Include="App_Data\jobs\continuous\job\job.vshost.exe" />
+    <Content Include="App_Data\jobs\continuous\job\Microsoft.WindowsAzure.Configuration.dll" />
+    <Content Include="App_Data\jobs\continuous\job\Microsoft.WindowsAzure.Jobs.dll" />
+    <Content Include="App_Data\jobs\continuous\job\Microsoft.WindowsAzure.Jobs.Host.dll" />
+    <Content Include="App_Data\jobs\continuous\job\Microsoft.WindowsAzure.Jobs.Host.xml" />
+    <Content Include="App_Data\jobs\continuous\job\Microsoft.WindowsAzure.Jobs.xml" />
+    <Content Include="App_Data\jobs\continuous\job\Microsoft.WindowsAzure.StorageClient.dll" />
+    <Content Include="App_Data\jobs\continuous\job\Newtonsoft.Json.dll" />
+    <Content Include="App_Data\jobs\continuous\job\Newtonsoft.Json.xml" />
     <Content Include="App_Data\jobs\continuous\job\System.Data.SqlServerCe.dll" />
     <Content Include="App_Data\jobs\continuous\job\System.Data.SqlServerCe.Entity.dll" />
+    <Content Include="App_Data\jobs\continuous\job\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
     <Content Include="App_Data\jobs\continuous\job\x86\Microsoft.VC90.CRT\msvcr90.dll" />
     <Content Include="App_Data\jobs\continuous\job\x86\Microsoft.VC90.CRT\README_ENU.txt" />
     <Content Include="App_Data\jobs\continuous\job\x86\sqlceca40.dll" />
@@ -403,8 +414,7 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
-    <Content Include="App_Data\jobs\continuous\job\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
-    <Content Include="App_Data\jobs\continuous\job\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+    <Content Include="App_Data\jobs\continuous\job\job.vshost.exe.config" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
