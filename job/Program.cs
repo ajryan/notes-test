@@ -15,6 +15,8 @@ namespace job
             while (true)
             {
                 WriteLine("Note count job running...");
+                WriteLine("Current directory is: " + Environment.CurrentDirectory);
+
                 using (var context = new NotesContext())
                 {
                     int noteDiff = context.Notes.Count() - noteCount;
