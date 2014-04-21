@@ -17,7 +17,14 @@ namespace job
                 WriteLine("Note count job running...");
                 WriteLine("Current directory is: " + Environment.CurrentDirectory);
 
-                using (var context = new NotesContext())
+                string wwwRootPath = Environment.GetEnvironmentVariable("WEBROOT_PATH");
+                WriteLine("WEBROOT_PATH is: " + wwwRootPath);
+
+                NotesContext context = String.IsNullOrEmpty(wwwRootPath)
+                    ? new NotesContext()
+                    : new NotesContext(String.Format("Data Source={0}\\Notes.mdf", wwwRootPath));
+
+                using (context)
                 {
                     int noteDiff = context.Notes.Count() - noteCount;
                     
