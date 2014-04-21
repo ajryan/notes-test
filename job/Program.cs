@@ -22,7 +22,7 @@ namespace job
 
                 NotesContext context = String.IsNullOrEmpty(wwwRootPath)
                     ? new NotesContext()
-                    : new NotesContext(String.Format("Data Source={0}\\Notes.mdf", wwwRootPath));
+                    : new NotesContext(String.Format("Data Source={0}\\App_Data\\Notes.mdf", wwwRootPath));
 
                 using (context)
                 {
