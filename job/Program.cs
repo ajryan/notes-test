@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -18,14 +17,19 @@ namespace job
             // so we can also run our count loop
             var host = new JobHost();
             host.RunOnBackgroundThread();
-
+            
             RunNoteCountLoop();
         }
 
         public static void ProcessQueueMessage(
             [QueueInput("webjobsqueue")] string noteTitle)
         {
-            WriteLine("Sending an email using my favorite API. New note title: " + noteTitle);
+            WriteLine("Sending an SMS. New note title: " + noteTitle);
+            Emailer.SendEmail(
+                "ryan.aidan@gmail.com",
+                "3013286768@tmomail.net",
+                "New note: " + noteTitle,
+                "A new note was posted at http://notes-test.azurewebsites.net/");
         }
 
         private static void RunNoteCountLoop()
