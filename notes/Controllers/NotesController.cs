@@ -87,11 +87,11 @@ namespace notes.Controllers
 
             // if we have a storage connection string,
             // we will post a "webjobsqueue" message
-            var storageConnectionString = ConfigurationManager.ConnectionStrings["storageConnectionString"].ConnectionString;
-            if (!String.IsNullOrEmpty(storageConnectionString))
+            var storageConnectionString = ConfigurationManager.ConnectionStrings["AzureJobsRuntime"];
+            if (storageConnectionString != null)
             {
                 // connect to the storage account and get a queue client
-                var storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+                var storageAccount = CloudStorageAccount.Parse(storageConnectionString.ConnectionString);
                 var queueClient = storageAccount.CreateCloudQueueClient();
                 
                 // connect to the webjobsqueue queue (and create if it does not exist)
