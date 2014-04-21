@@ -6,6 +6,7 @@
             this.$scope = $scope;
             this.$http = $http;
             $scope.welcomeMessage = "Notes!";
+            $scope.alertMessage = "Loading...";
 
             // subscribe to SignalR
             var connection = $.hubConnection();
@@ -17,14 +18,15 @@
                     msg[_i] = arguments[_i + 0];
                 }
                 $scope.$apply(function () {
-                    $scope.alertMessage = 'New note: ' + msg[0];
+                    $scope.alertMessage = 'New note: ' + msg[0] + '. Loading...';
                     $scope.refreshNotes();
                 });
             });
 
             $scope.refreshNotes = function () {
                 _this.$http.get('/api/Notes').then(function (result) {
-                    _this.$scope.notes = result.data;
+                    $scope.notes = result.data;
+                    $scope.alertMessage = "Refrehsed.";
                 });
             };
 

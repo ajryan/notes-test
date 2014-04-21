@@ -11,6 +11,7 @@
     export class IndexCtrl {
         constructor(private $scope: IndexScope, private $http: ng.IHttpService) {
             $scope.welcomeMessage = "Notes!";
+            $scope.alertMessage = "Loading...";
 
             // subscribe to SignalR
             var connection = $.hubConnection();
@@ -18,14 +19,15 @@
             connection.start();
             proxy.on('noteAdded', (...msg) => {
                 $scope.$apply(() => {
-                    $scope.alertMessage = 'New note: ' + msg[0];
+                    $scope.alertMessage = 'New note: ' + msg[0] + '. Loading...';
                     $scope.refreshNotes();
                 });
             });
 
             $scope.refreshNotes = () => {
                 this.$http.get('/api/Notes').then(result => {
-                    this.$scope.notes = result.data;
+                    $scope.notes = result.data;
+                    $scope.alertMessage = "Refrehsed.";
                 });
             }
 
