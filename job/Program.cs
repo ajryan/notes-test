@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using Microsoft.WindowsAzure.Jobs;
 using notes.Data;
 
 namespace job
@@ -10,6 +11,24 @@ namespace job
     class Program
     {
         static void Main(string[] args)
+        {
+            WriteLine("JOB INITIALIZING");
+
+            // run job listener on background thread
+            // so we can also run our count loop
+            var host = new JobHost();
+            host.RunOnBackgroundThread();
+
+            RunNoteCountLoop();
+        }
+
+        public static void ProcessQueueMessage(
+            [QueueInput("webjobsqueue")] string noteTitle)
+        {
+            WriteLine("Sending an email using my favorite API. New note title: " + noteTitle);
+        }
+
+        private static void RunNoteCountLoop()
         {
             int noteCount = 0;
             while (true)
@@ -27,10 +46,10 @@ namespace job
                 using (context)
                 {
                     int noteDiff = context.Notes.Count() - noteCount;
-                    
+
                     WriteLine(
                         String.Format("{0} new notes; {1} total notes", noteDiff, noteCount));
-                    
+
                     noteCount += noteDiff;
                 }
                 WriteLine("Note count job done.");
