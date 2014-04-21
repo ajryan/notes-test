@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -86,7 +87,7 @@ namespace notes.Controllers
 
             // if we have a storage connection string,
             // we will post a "webjobsqueue" message
-            var storageConnectionString = CloudConfigurationManager.GetSetting("storageConnectionString");
+            var storageConnectionString = ConfigurationManager.ConnectionStrings["storageConnectionString"].ConnectionString;
             if (!String.IsNullOrEmpty(storageConnectionString))
             {
                 // connect to the storage account and get a queue client
