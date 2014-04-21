@@ -6,6 +6,9 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Queue;
 using notes.Data;
 using notes.Models;
 
@@ -81,6 +84,23 @@ namespace notes.Controllers
             db.Notes.Add(note);
             await db.SaveChangesAsync();
 
+            // if we have a storage connection string,
+            // we will post a "webjobsqueue" message
+            var storageConnectionString = CloudConfigurationManager.GetSetting("storageConnectionString");
+            if (!String.IsNullOrEmpty(storageConnectionString))
+            {
+                // connect to the storage account and get a queue client
+                var storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+                var queueClient = storageAccount.CreateCloudQueueClient();
+                
+                // connect to the webjobsqueue queue (and create if it does not exist)
+                var jobQueue = queueClient.GetQueueReference("webjobsqueue");
+                await jobQueue.CreateIfNotExistsAsync();
+                
+                // post the title to the queue
+                var message = new CloudQueueMessage(note.Title);
+                await jobQueue.AddMessageAsync(message);
+            }
             return CreatedAtRoute("DefaultApi", new { id = note.Id }, note);
         }
 
