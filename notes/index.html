@@ -14,10 +14,11 @@
     <h2 ng-bind="alertMessage"></h2>
     <table>
         <thead>
-            <tr><th>Title</th><th>Text</th></tr>
+            <tr><th></th><th>Title</th><th>Text</th></tr>
         </thead>
         <tbody>
             <tr ng-repeat="note in notes">
+                <th><button ng-click="deleteNote(note.Id)">X</button></th>
                 <td ng-bind="note.Title"></td>
                 <td ng-bind="note.Text"></td>
             </tr>
