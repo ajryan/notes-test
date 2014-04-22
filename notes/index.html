@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app>
 <head>
     <title>Notes</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/css/normalize.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/css/foundation.min.css"/>
     <script type="text/javascript">
     window.appInsights = { queue: [], applicationInsightsId: null, accountId: null, appUserId: null, configUrl: null, start: function (n) { function u(n, t) { n[t] = function () { var i = arguments; n.queue.push(function () { n[t].apply(n, i) }) } } function f(n) { var t = document.createElement("script"); return t.type = "text/javascript", t.src = n, t.async = !0, t } function r() { i.appendChild(f("//az416426.vo.msecnd.net/scripts/ai.0.js")) } var i, t; this.applicationInsightsId = n; u(this, "logEvent"); u(this, "logPageView"); i = document.getElementsByTagName("script")[0].parentNode; this.configUrl === null ? r() : (t = f(this.configUrl), t.onload = r, t.onerror = r, i.appendChild(t)); this.start = function () { } } };
 
@@ -10,24 +12,28 @@
     </script>
 </head>
 <body ng-controller="Notes.IndexCtrl">
-    <h1 >[STAGING] <span ng-bind="welcomeMessage"></span></h1>
-    <h2 ng-bind="alertMessage"></h2>
-    <table>
-        <thead>
-            <tr><th></th><th>Title</th><th>Text</th></tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="note in notes">
-                <th><button ng-click="deleteNote(note.Id)">X</button></th>
-                <td ng-bind="note.Title"></td>
-                <td ng-bind="note.Text"></td>
-            </tr>
-        </tbody>
-    </table>
-    <h2>New Note</h2>
-    Title: <input ng-model="newTitle" />
-    Text: <input ng-model="newText" />
-    <button ng-click="submitNew()">Submit</button>
+    <div class="row">
+        <div class="column">
+            <h1 ng-bind="welcomeMessage"></h1>
+            <h2 ng-bind="alertMessage"></h2>
+            <table>
+                <thead>
+                    <tr><th></th><th>Title</th><th>Text</th></tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="note in notes">
+                        <th><a class="label alert" ng-click="deleteNote(note.Id)">X</a></th>
+                        <td ng-bind="note.Title"></td>
+                        <td ng-bind="note.Text"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>New Note</h2>
+            Title: <input ng-model="newTitle" />
+            Text: <input ng-model="newText" />
+            <button ng-click="submitNew()">Submit</button>
+        </div>
+    </div>
     <script src="/Scripts/jquery-2.1.0.js"></script>
     <script src="/Scripts/jquery.signalR-2.0.3.js"></script>
     <script src="/signalr/hubs"></script>
