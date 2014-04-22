@@ -7,6 +7,7 @@
         newText: string;
         submitNew();
         refreshNotes();
+        deleteNote(noteId: number);
     }
     export class IndexCtrl {
         constructor(private $scope: IndexScope, private $http: ng.IHttpService) {
@@ -27,7 +28,7 @@
             $scope.refreshNotes = () => {
                 this.$http.get('/api/Notes').then(result => {
                     $scope.notes = result.data;
-                    $scope.alertMessage = "Refrehsed.";
+                    $scope.alertMessage = "Refreshed.";
                 });
             }
 
@@ -40,6 +41,14 @@
                     $scope.refreshNotes();
                     proxy.invoke('addNote', newNote.Title);
                     (<any> window).appInsights.logEvent('note added');
+                });
+            };
+
+            $scope.deleteNote = (noteId: number) => {
+                $scope.alertMessage = "Deleting node Id " + noteId + "...";
+                this.$http.delete('/api/Notes/' + noteId).then(_ => {
+                    $scope.alertMessage = "Note deleted. Refreshing...";
+                    $scope.refreshNotes();
                 });
             };
 

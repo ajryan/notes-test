@@ -26,7 +26,7 @@
             $scope.refreshNotes = function () {
                 _this.$http.get('/api/Notes').then(function (result) {
                     $scope.notes = result.data;
-                    $scope.alertMessage = "Refrehsed.";
+                    $scope.alertMessage = "Refreshed.";
                 });
             };
 
@@ -39,6 +39,14 @@
                     $scope.refreshNotes();
                     proxy.invoke('addNote', newNote.Title);
                     window.appInsights.logEvent('note added');
+                });
+            };
+
+            $scope.deleteNote = function (noteId) {
+                $scope.alertMessage = "Deleting node Id " + noteId + "...";
+                _this.$http.delete('/api/Notes/' + noteId).then(function (_) {
+                    $scope.alertMessage = "Note deleted. Refreshing...";
+                    $scope.refreshNotes();
                 });
             };
 
