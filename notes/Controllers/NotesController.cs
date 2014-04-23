@@ -22,6 +22,7 @@ namespace notes.Controllers
         // GET: api/Notes
         public IQueryable<Note> GetNotes()
         {
+            throw new ApplicationException("A fake exception happened.");
             return db.Notes;
         }
 
