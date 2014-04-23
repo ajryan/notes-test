@@ -87,6 +87,8 @@ namespace notes.Controllers
             db.Notes.Add(note);
             await db.SaveChangesAsync();
 
+            Trace.TraceInformation("Note was created: " + note.Title);
+
             // if we have a storage connection string,
             // we will post a "webjobsqueue" message
             var storageConnectionString = ConfigurationManager.ConnectionStrings["AzureJobsRuntime"];
