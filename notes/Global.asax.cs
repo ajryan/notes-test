@@ -11,9 +11,10 @@ namespace notes
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            GlobalConfiguration.Configuration.Services.Replace(typeof(ITraceWriter), new DiagnosticTraceWriter());
+            GlobalConfiguration.Configuration.EnableSystemDiagnosticsTracing();
 
             Database.SetInitializer(new NotesInitializer());
+            
         }
     }
 }
