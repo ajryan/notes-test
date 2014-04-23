@@ -2,11 +2,13 @@
 using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.Tracing;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
@@ -22,7 +24,6 @@ namespace notes.Controllers
         // GET: api/Notes
         public IQueryable<Note> GetNotes()
         {
-            throw new ApplicationException("A fake exception happened.");
             return db.Notes;
         }
 
