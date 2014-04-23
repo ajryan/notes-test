@@ -66,6 +66,7 @@ IF NOT DEFINED MSBUILD_PATH (
 :: ----------
 
 echo Handling .NET Web Application deployment.
+echo HELLO BAY AZURE!
 
 :: 1. Restore NuGet packages
 IF /I "notes.sln" NEQ "" (
